@@ -9,9 +9,50 @@
 </head>
 
 <body>
-    <h1>Välkommen tillbaka, [Namn]</h1>
+    <h1>Välkommen tillbaka, <div adngu01=""></div></h1>
     <h2>Redo för din nästa äventyr?</h2>
     <button><a href="#">Hyr scooter</a></button>
-    <p>gay</p>
+    <p></p>
+</body>
+</html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="VHDeS.se.css">
+    <title>VHDeS.se</title>
+</head>
+<body>
+    <form id="myForm">
+        <label for="username">Please enter your username:</label>
+        <input type="text" id="username" name="username">
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        let username = null;
+        const form = document.getElementById('myForm');
+
+        form.addEventListener('submit', function (event){
+            event.preventDefault();
+            
+            const text = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            console.log(text + password);
+
+            if( text == "adngu01" && password == "Adnan0804"){
+                username = text;
+                window.location.href = VHDeSrättAnvändare.html?username=${encodeURIComponent(username)};
+            }
+            else{
+                alert("Fel användarnamn eller lösenord");
+            }
+        });
+    </script>
 </body>
 </html>
