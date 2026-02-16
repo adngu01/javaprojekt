@@ -34,25 +34,25 @@
     </form>
 
     <script>
-        let username = null;
-        const form = document.getElementById('myForm');
+const form = document.getElementById('myForm');
 
-        form.addEventListener('submit', function (event){
-            event.preventDefault();
-            
-            const text = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            console.log(text + password);
+form.addEventListener('submit', function (event){
+    event.preventDefault(); // stoppar sidan från att reloada
 
-            if( text == "adngu01" && password == "Adnan0804"){
-                username = text;
-                window.location.href = VHDeSrättAnvändare.html?username=${encodeURIComponent(username)};
-            }
-            else{
-                alert("Fel användarnamn eller lösenord");
-            }
-        });
+    const text = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (text === "adngu01" && password === "Adnan0804") {
+    // Spara login-status
+    localStorage.setItem("loggedIn", "true");
+    localStorage.setItem("user", text);
+
+    // Skicka till rätt sida
+    window.location.href = "elscooterrättanvändare.html";
+} else {
+    alert("Fel användarnamn eller lösenord");
+}
+});
     </script>
 </body>
 </html>

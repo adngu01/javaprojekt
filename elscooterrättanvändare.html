@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+  
+</style>
+</head>
+<body>
+
+<h2>Inloggad som: <span id="user"></span></h2>
+<h1>Välj din elscooter</h1>
+<div class="image-container">
+    <div class="box">
+        <img src="https://eu-central-1-shared-euc1-02.graphassets.com/AMcYXQcgeRNu5q0szWSm1z/WiRd1BrDStunGUqQ2kny" alt="Elscooter 1">
+        <h3>Elscooter 1</h3>
+        <p>3 kr per minut</p>
+        <p>20 km/h</p>
+    </div>
+    <div class="box">
+        <img src="https://teknikveckan.fra1.cdn.digitaloceanspaces.com/uploads/2022/04/ryde.jpg" alt="Elscooter 2">
+        <h3>Elscooter 2</h3>
+        <p>5 kr per minut</p>
+        <p>30 km/h</p>
+    </div>
+    <div class="box">
+        <img src="https://static.feber.se/article_images/56/52/50/565250.jpg" alt="Elscooter 3">
+        <h3>Elscooter 3</h3>
+        <p>8 kr per minut</p>
+        <p>45 km/h</p>
+    </div>
+</div>
+
+<div id="historyBox">
+    <h3>Historik</h3>
+    <p id="historyText">Ingen scooter vald ännu.</p>
+</div>
+
+<button onclick="logout()">Logga ut</button>
+
+<script>
+
+if(localStorage.getItem("loggedIn") !== "true"){
+    window.location.href = "login.html";
+}
+
+
+
+
+const boxes = document.querySelectorAll('.image-container .box');
+const historyText = document.getElementById('historyText');
+const user = localStorage.getItem("user");
+
+boxes.forEach(box => {
+    box.addEventListener('click', function () {
+        boxes.forEach(b => {
+            b.classList.remove("selected");
+            b.classList.add("not-selected");
+        });
+        this.classList.remove("not-selected");
+        this.classList.add("selected");
+
+        const scooterName = this.querySelector("h3").innerText;
+        historyText.innerText = user + " har hyrt " + scooterName;
+    });
+});
+
+</script>
+
+</body>
+</html>
